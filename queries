@@ -1,0 +1,150 @@
+Task 1: Display employees whose salary is between 50000 to 100000
+
+->
+SELECT * FROM employees WHERE salary BETWEEN 50000 AND 100000;
+
+2) A query to join three tables.
+
+SQL
+SELECT e.name, d.department_name, m.manager_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+JOIN managers m ON e.manager_id = m.manager_id;
+
+This query will join three tables: employees, departments, and managers to return a list of employees with their department and manager names.
+
+
+3) Display employees whose salary is between 50000 to 100000.
+
+SQL
+SELECT * FROM employees WHERE salary BETWEEN 50000 AND 100000;
+
+This query will select all rows from the employees table where the salary column is between 50000 and 100000, inclusive.
+
+4) Display the employees whose name begins with 's'.
+
+SQL
+SELECT * FROM employees WHERE name LIKE 'S%';
+
+This query will select all rows from the employees table where the name column begins with the letter 'S'. The % character at the end of the name value is a wildcard that matches any number of characters.
+
+5) Find the number of employees whose birthdate is between some dates and group by gender.
+
+SQL
+SELECT COUNT(*) AS num_employees, gender
+FROM employees
+WHERE birthdate BETWEEN '1990-01-01' AND '1995-12-31'
+GROUP BY gender;
+
+This query will count the number of employees in the employees table whose birthdate is between January 1, 1990 and December 31, 1995, inclusive. The results will be grouped by gender.
+
+
+7) Display details of employees who work under manager id-986.
+
+SQL
+SELECT * FROM employees WHERE manager_id = 986;
+
+This query will select all rows from the employees table where the manager_id column is equal to 986.
+
+
+8) Display the details of employee whose last name ends with letter 'a' and contains 5 letters.
+
+SELECT * FROM employees WHERE surname LIKE '%a' AND LENGTH(surname) = 5;
+
+This query will select all rows from the employees table where the surname column ends with the letter 'a' and contains 5 letters. The LENGTH() function returns the length of a string.
+
+9) Display the 3rd highest salary from the employee table.
+
+SELECT salary FROM employees ORDER BY salary DESC LIMIT 2, 1;
+
+This query will select the salary column from the employees table and order the results in descending order. The LIMIT clause will return the third row in the results.
+
+10) Display the 1st and last record from the employee salary table.
+
+ SELECT * FROM employees ORDER BY employee_id ASC LIMIT 1, 1;
+
+This query will select all rows from the employees table and order the results in ascending order by the employee_id column. The LIMIT clause will return the first row in the results
+
+11) Create the three tables Table A,Table B,Table C. Join the first two tables using join query.
+
+CREATE TABLE TableA (
+  id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE TableB (
+  id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE TableC (
+  id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO TableA (id, name) VALUES (1, 'John Doe'), (2, 'Jane Doe'), (3, 'Peter Parker'), (4, 'Mary Jane');
+INSERT INTO TableB (id, name) VALUES (1, 'John Doe'), (2, 'Jane Doe'), (3, 'Peter Parker');
+
+-- Join the first two tables using an inner join
+SELECT *
+FROM TableA
+INNER JOIN TableB ON TableA.id = TableB.id;
+
+This will create the three tables and insert some sample data into them. The last query will join the first two tables on the id column and return all rows that match.
+
+
+12) Create an EmpPosition Table and display the person's records having the third highest salary.
+
+CREATE TABLE EmpPosition (
+  employee_id INT NOT NULL,
+  position VARCHAR(255) NOT NULL,
+  salary INT NOT NULL,
+  PRIMARY KEY (employee_id)
+);
+
+SELECT * FROM EmpPosition ORDER BY salary DESC LIMIT 2, 1;
+
+This query will create a table called EmpPosition with three columns: employee_id, position, and salary. The employee_id column will be the primary key. The query will then display the records of the person with the third highest salary.
+
+
+13) Create an EmpInfo table and display the first and last record of the table.
+
+CREATE TABLE EmpInfo (
+  employee_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  PRIMARY KEY (employee_id)
+);
+
+SELECT * FROM EmpInfo ORDER BY employee_id ASC LIMIT 1, 1;
+
+
+14) Form three tables TableA, TableB, and TableC. By making use of only two join operations, find the intersection between all three tables.
+
+CREATE TABLE TableA (
+  id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE TableB (
+  id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE TableC (
+  id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+SELECT *
+FROM TableA
+INNER JOIN TableB ON TableA.id = TableB.id
+INNER JOIN TableC ON TableB.id = TableC.id;
+
+
